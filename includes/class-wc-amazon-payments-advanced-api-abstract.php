@@ -482,7 +482,7 @@ abstract class WC_Amazon_Payments_Advanced_API_Abstract {
 				$formatted['city'] = ''; // Force empty city
 			}
 		}
-		$formatted['postcode'] = isset( $address->PostalCode ) ? (string) $address->PostalCode : null;
+		$formatted['postcode'] = isset( $address->PostalCode ) ? (string) preg_replace( '/[^0-9-_]/', '', $address->Phone ) : null;
 		$formatted['state'] = isset( $address->StateOrRegion ) ? (string) $address->StateOrRegion : null;
 		$formatted['country'] = isset( $address->CountryCode ) ? (string) $address->CountryCode : null;
 
